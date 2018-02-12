@@ -75,7 +75,7 @@ def binarize_image_using_pil(captcha_path, binary_image_path='input-black-n-whit
 
 
 def binarize_image_using_opencv(captcha_path, binary_image_path='input-black-n-white.jpg'):
-    im_gray = cv2.imread(captcha_path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+    im_gray = cv2.cvtColor(captcha_path, 0)
     (thresh, im_bw) = cv2.threshold(im_gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
     # although thresh is used below, gonna pick something suitable
     im_bw = cv2.threshold(im_gray, thresh, 255, cv2.THRESH_BINARY)[1]
