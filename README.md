@@ -5,9 +5,8 @@
     $ sudo apt-get install tesseract-ocr
 
 2. Download the latest Opencv from https://opencv.org/
-3. Follow these instructions to install opencv http://stackoverflow.com/questions/15790501/why-cv2-so-missing-after-opencv-installed
+3. Follow these instructions to install opencv http://stackoverflow.com/questions/15790501/why-cv2-so-missing-after-opencv-installed and set PYTHONPATH like it's said
 
-    # Set PYTHONPATH like it's said
     export PYTHONPATH=~/projects/opencv/release/lib:$PYTHONPATH
 
 4. Install python dependencies
