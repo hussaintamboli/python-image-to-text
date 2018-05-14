@@ -6,6 +6,8 @@
 from PIL import Image, ImageFilter, ImageChops
 from pytesseract import image_to_string
 import cv2
+import numpy
+
 
 def preprocess_image_using_pil(image_path):
     # unblur, sharpen filters
@@ -75,7 +77,8 @@ def binarize_image_using_pil(captcha_path, binary_image_path='input-black-n-whit
 
 
 def binarize_image_using_opencv(captcha_path, binary_image_path='input-black-n-white.jpg'):
-    im_gray = cv2.cvtColor(captcha_path, 0)
+    img = cv2.imread(captcha_path)
+    im_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     (thresh, im_bw) = cv2.threshold(im_gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
     # although thresh is used below, gonna pick something suitable
     im_bw = cv2.threshold(im_gray, thresh, 255, cv2.THRESH_BINARY)[1]
